@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
 }
 
 datasource db {
@@ -14,7 +15,7 @@ model User {
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
   name          String
   image         String?
-  email         String    @unique
+  email         String?    @unique
   emailVerified DateTime?
   password      String?
   createdAt     DateTime  @default(now())
@@ -61,13 +62,11 @@ model VerificationToken {
 }
 
 model Movie {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  title String
-  description String
-  videoUrl String
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  title        String
+  description  String
+  videoUrl     String
   thumanailUrl String
-  genre String
-  duration String
+  genre        String
+  duration     String
 }
-
-
