@@ -4,18 +4,21 @@ import Image from 'next/image'
 import { BsFillPlayFill } from 'react-icons/bs';
 import { MovieInterface } from '@/types';
 import FavoriteButton from "./FavoriteButton";
+import { useRouter } from 'next/router';
 
 interface MovieCardProps {
     data: MovieInterface;
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
+    const router = useRouter();
+
     if (isEmpty(data)) {
         return null;
     }
 
     return (
-        <div className="group bg-zinc-900 col-span- relative h-[12vw]">
+        <div className="group bg-zinc-900 col-span relative h-[12vw]" onClick={() => router.push(`/watch/${data?.id}`)}>
             <img
                 className="
                  cursor-pointer
@@ -79,7 +82,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
                             items-center 
                             transition
                             hover:bg-neutral-300"
-                            onClick={() => { }}
+                            onClick={() => router.push(`/watch/${data?.id}`)}
                         >
                             <BsFillPlayFill size={30} />
                         </div>
