@@ -3,6 +3,7 @@ import { isEmpty } from 'lodash';
 import Image from 'next/image'
 import { BsFillPlayFill } from 'react-icons/bs';
 import { MovieInterface } from '@/types';
+import FavoriteButton from "./FavoriteButton";
 
 interface MovieCardProps {
     data: MovieInterface;
@@ -82,6 +83,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
                         >
                             <BsFillPlayFill size={30} />
                         </div>
+                        <FavoriteButton movieId={data?.id} />
                     </div>
                     <p className="text-green-400 font-semibold mt-4">
                         New <span className="text-white">2023</span>
